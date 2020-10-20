@@ -1,4 +1,6 @@
-RSpec.feature 'Rich Editor Settings', :js do
+RSpec.feature 'Rich Editor Settings', js: true do
+  include ::Select2Helper
+
   stub_authorization!
 
   context '#edit' do
@@ -26,8 +28,10 @@ RSpec.feature 'Rich Editor Settings', :js do
       scenario 'will be applied when used' do
         visit spree.edit_admin_editor_settings_path
 
-        select2 'TinyMCE', from: 'Rich Editor engine'
+        select2_choose('current_editor', choose: 'TinyMCE')
         click_button 'Update'
+
+        expect(page).to have_content('successfully updated!')
 
         visit spree.edit_admin_product_path(product)
         expect(page).to have_css '.mce-tinymce', match: :one
@@ -38,8 +42,10 @@ RSpec.feature 'Rich Editor Settings', :js do
       scenario 'will be applied when used' do
         visit spree.edit_admin_editor_settings_path
 
-        select2 'CKEditor', from: 'Rich Editor engine'
+        select2_choose('current_editor', choose: 'CKEditor')
         click_button 'Update'
+
+        expect(page).to have_content('successfully updated!')
 
         visit spree.edit_admin_product_path(product)
         expect(page).to have_css '.cke_editor_product_description', match: :one
