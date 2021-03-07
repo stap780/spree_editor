@@ -25,7 +25,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'spree_core', spree_version
   s.add_dependency 'spree_backend', spree_version
   s.add_dependency 'spree_extension'
-  s.add_dependency 'ckeditor', '~> 5.0.0'
+  s.add_dependency 'ckeditor', '~> 5.1.0'
   s.add_dependency 'tinymce-rails', '~> 4.2.5'
   s.add_dependency 'coffee-rails'
   s.add_runtime_dependency 'deface', '~> 1.0'
